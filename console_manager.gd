@@ -2,7 +2,6 @@ extends Node
 
 signal console_active(p_active)
 
-const console_const = preload("console.tscn")
 var console: CanvasLayer = null
 
 var console_is_active: bool = false
