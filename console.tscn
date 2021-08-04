@@ -96,8 +96,8 @@ __meta__ = {
 }
 
 [node name="ConsoleText" type="RichTextLabel" parent="ConsoleBox/Container"]
-margin_right = 1024.0
-margin_bottom = 267.0
+offset_right = 1024.0
+offset_bottom = 267.0
 focus_neighbour_left = NodePath("../LineEdit")
 focus_neighbour_top = NodePath("../LineEdit")
 focus_neighbour_right = NodePath("../LineEdit")
@@ -118,9 +118,9 @@ custom_constants/line_separation = 4
 bbcode_enabled = true
 
 [node name="ConsoleLine" type="LineEdit" parent="ConsoleBox/Container"]
-margin_top = 271.0
-margin_right = 1024.0
-margin_bottom = 300.0
+offset_top = 271.0
+offset_right = 1024.0
+offset_bottom = 300.0
 focus_neighbour_left = NodePath(".")
 focus_neighbour_top = NodePath(".")
 focus_neighbour_right = NodePath(".")

@@ -40,6 +40,7 @@ func toggle_console() -> void:
 	console.toggle_console()
 		
 func _ready():
-	console = Console
-	assert(console.connect("toggled", self, "_console_toggled") == OK)
-	assert(console._animationPlayer.connect("animation_finished", self, "_toggle_animation_finished") == OK)
+	var n:Variant = Console
+	console = n
+	assert(console.connect("toggled", Callable(self, "_console_toggled")) == OK)
+	assert(console._animationPlayer.connect("animation_finished", Callable(self, "_toggle_animation_finished")) == OK)
