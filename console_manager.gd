@@ -13,10 +13,10 @@ func get_console() -> Node:
 	return console
 	
 func add_command(p_name: String, p_target: Node, p_target_name = null):
-	if console:
+	#if console:
 		return console.add_command(p_name, p_target, p_target_name)
-	else:
-		return null
+	#else:
+	#	return null
 	
 func printl(p_string: String) -> void:
 	get_console().write_line(p_string)
@@ -40,7 +40,8 @@ func toggle_console() -> void:
 	console.toggle_console()
 		
 func _ready():
-	var n:Variant = Console
-	console = n
+	print("ConsoleManager _ready")
+	console = $"/root/Console"
 	assert(console.connect("toggled", Callable(self, "_console_toggled")) == OK)
+	print("Console is " + str(console) + " console._animationPlayer is " + str(console._animationPlayer))
 	assert(console._animationPlayer.connect("animation_finished", Callable(self, "_toggle_animation_finished")) == OK)

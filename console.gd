@@ -50,7 +50,7 @@ var _erase_bb_tags_regex
 
 # @var  bool
 var is_console_shown = true :
-	set = _set_protected
+	set = set_is_console_shown
 
 
 # @var  bool
@@ -78,6 +78,8 @@ func _init():
 
 
 func _ready():
+	print("Console _ready")
+	print("Self is " + str(self) + " self._animationPlayer is " + str(self._animationPlayer))
 	# Allow selecting console text
 	self.Text.set_selection_enabled(true)
 	# Follow console output (for scrolling)
@@ -174,17 +176,17 @@ func clear():
 	if self.Text:
 		self.Text.set_bbcode('')
 
-# @returns  Console
-func toggle_console():
+
+func set_is_console_shown(value):
 	# Open the console
-	if !self.is_console_shown:
+	if value and !is_console_shown:
 		previous_focus_owner = self.Line.get_focus_owner()
 		self._consoleBox.show()
 		self.Line.clear()
 		self.Line.grab_focus()
 		self._animationPlayer.play_backwards('fade')
 		$InputBlocker.mouse_filter = Control.MOUSE_FILTER_STOP
-	else:
+	elif !value and is_console_shown:
 		self.Line.accept_event() # Prevents from DefaultActions.action_console_toggle key character getting into previous_focus_owner value
 		if is_instance_valid(previous_focus_owner):
 			previous_focus_owner.grab_focus()
@@ -192,9 +194,14 @@ func toggle_console():
 		self._animationPlayer.play('fade')
 		$InputBlocker.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-	is_console_shown = !self.is_console_shown
+	is_console_shown = value
 	emit_signal("toggled", is_console_shown)
 
+	return self
+
+# @returns  Console
+func toggle_console():
+	self.is_console_shown = !self.is_console_shown
 	return self
 
 
