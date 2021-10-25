@@ -158,7 +158,7 @@ func remove_command(name):
 func write(message):
 	message = str(message)
 	if self.Text:
-		self.Text.set_bbcode(self.Text.get_bbcode() + message)
+		self.Text.append_text(message)
 	print(self._erase_bb_tags_regex.sub(message, '', true))
 
 
@@ -167,14 +167,14 @@ func write(message):
 func write_line(message = ''):
 	message = str(message)
 	if self.Text:
-		self.Text.set_bbcode(self.Text.get_bbcode() + message + '\n')
+		self.Text.append_text(message + '\n')
 	print(self._erase_bb_tags_regex.sub(message, '', true))
 
 
 # @returns  void
 func clear():
 	if self.Text:
-		self.Text.set_bbcode('')
+		self.Text.text = ''
 
 
 func set_is_console_shown(value):
