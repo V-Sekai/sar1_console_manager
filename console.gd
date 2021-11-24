@@ -150,7 +150,7 @@ func add_command(name, target, target_name = null):
 # @returns  int
 func remove_command(name):
 	emit_signal("command_removed", name)
-	return self._command_service.remove(name)
+	return self._command_service.remove_at(name)
 
 
 # @param    String  message
