@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=3 uid="uid://cev31p2vnhuiv"]
 
-[ext_resource type="FontData" path="res://addons/quentincaffeino-console/assets/fonts/source-code-pro/OTF/SourceCodePro-Bold.otf" id="1"]
-[ext_resource type="FontData" path="res://addons/quentincaffeino-console/assets/fonts/source-code-pro/OTF/SourceCodePro-It.otf" id="2"]
-[ext_resource type="FontData" path="res://addons/quentincaffeino-console/assets/fonts/source-code-pro/OTF/SourceCodePro-Regular.otf" id="3"]
-[ext_resource type="FontData" path="res://addons/quentincaffeino-console/assets/fonts/source-code-pro/OTF/SourceCodePro-BoldIt.otf" id="4"]
+[ext_resource type="FontData" uid="uid://dnc7rix870qn3" path="res://addons/quentincaffeino-console/assets/fonts/source-code-pro/OTF/SourceCodePro-Bold.otf" id="1"]
+[ext_resource type="FontData" uid="uid://dtptvqkujrfoq" path="res://addons/quentincaffeino-console/assets/fonts/source-code-pro/OTF/SourceCodePro-It.otf" id="2"]
+[ext_resource type="FontData" uid="uid://b7dfceg68w1vq" path="res://addons/quentincaffeino-console/assets/fonts/source-code-pro/OTF/SourceCodePro-Regular.otf" id="3"]
+[ext_resource type="FontData" uid="uid://cxpvjpe607a1u" path="res://addons/quentincaffeino-console/assets/fonts/source-code-pro/OTF/SourceCodePro-BoldIt.otf" id="4"]
 [ext_resource type="Script" path="res://addons/sar1_console_manager/console.gd" id="5"]
 [ext_resource type="Script" path="res://addons/quentincaffeino-console/src/ConsoleLine.gd" id="6"]
 
@@ -11,11 +11,11 @@
 length = 0.25
 step = 0.05
 tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Container/ConsoleLine")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
@@ -28,11 +28,11 @@ tracks/0/keys = {
 }]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
@@ -87,7 +87,6 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ConsoleBox"]
 anims/fade = SubResource( "1" )
-blend_times = []
 script = null
 
 [node name="Container" type="VBoxContainer" parent="ConsoleBox"]
@@ -101,7 +100,7 @@ __meta__ = {
 
 [node name="ConsoleText" type="RichTextLabel" parent="ConsoleBox/Container"]
 offset_right = 1600.0
-offset_bottom = 415.0
+offset_bottom = 401.0
 focus_next = NodePath("../LineEdit")
 focus_previous = NodePath("../LineEdit")
 size_flags_horizontal = 3
@@ -115,12 +114,10 @@ theme_override_fonts/normal_font = SubResource( "7" )
 theme_override_styles/focus = SubResource( "2" )
 theme_override_styles/normal = SubResource( "3" )
 bbcode_enabled = true
-custom_effects = []
-structured_text_bidi_override_options = []
 script = null
 
 [node name="ConsoleLine" type="LineEdit" parent="ConsoleBox/Container"]
-offset_top = 419.0
+offset_top = 409.0
 offset_right = 1600.0
 offset_bottom = 450.0
 focus_next = NodePath(".")
@@ -128,5 +125,4 @@ focus_previous = NodePath(".")
 size_flags_horizontal = 3
 theme_override_fonts/font = SubResource( "9" )
 theme_override_styles/focus = SubResource( "8" )
-structured_text_bidi_override_options = []
 script = ExtResource( "6" )
