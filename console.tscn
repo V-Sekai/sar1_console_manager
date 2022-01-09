@@ -119,5 +119,6 @@ focus_next = NodePath(".")
 focus_previous = NodePath(".")
 size_flags_horizontal = 3
 theme_override_fonts/font = SubResource( "9" )
+theme_override_font_sizes/font_size = 16
 theme_override_styles/focus = SubResource( "8" )
 script = ExtResource( "6" )
