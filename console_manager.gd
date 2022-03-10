@@ -30,11 +30,11 @@ func fatal_error(p_string: String) -> void:
 func _console_toggled(p_console_toggled: bool) -> void:
 	if p_console_toggled:
 		console_is_active = true
-		emit_signal("console_active", true)
+		console_active.emit(true)
 
 func _toggle_animation_finished(p_anim_name) -> void:
 	if !console.is_console_shown and p_anim_name == "fade":
-		emit_signal("console_active", false)
+		console_active.emit(false)
 	
 func toggle_console() -> void:
 	console.toggle_console()
@@ -42,6 +42,6 @@ func toggle_console() -> void:
 func _ready():
 	print("ConsoleManager _ready")
 	console = $"/root/Console"
-	assert(console.connect("toggled", Callable(self, "_console_toggled")) == OK)
+	assert(console.toggled.connect(self._console_toggled) == OK)
 	print("Console is " + str(console) + " console._animationPlayer is " + str(console._animationPlayer))
-	assert(console._animationPlayer.connect("animation_finished", Callable(self, "_toggle_animation_finished")) == OK)
+	assert(console._animationPlayer.animation_finished.connect(self._toggle_animation_finished) == OK)

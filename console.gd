@@ -85,11 +85,11 @@ func _ready():
 	# Follow console output (for scrolling)
 	self.Text.set_scroll_follow(true)
 	# React to clicks on console urls
-	self.Text.connect('meta_clicked', Callable(self.Line, 'set_text'))
+	self.Text.meta_clicked.connect(self.Line.set_text)
 
 	# Hide console by default
 	self._consoleBox.hide()
-	self._animationPlayer.connect("animation_finished", Callable(self, "_toggle_animation_finished"))
+	self._animationPlayer.animation_finished.connect(self._toggle_animation_finished)
 	self.toggle_console()
 
 	# Console keyboard control
@@ -143,13 +143,13 @@ func find_commands(name):
 # @param    String|null  target_name
 # @returns  Command/CommandBuilder
 func add_command(name, target, target_name = null):
-	emit_signal("command_added", name, target, target_name)
+	command_added.emit(name, target, target_name)
 	return self._command_service.create(name, target, target_name)
 
 # @param    String  name
 # @returns  int
 func remove_command(name):
-	emit_signal("command_removed", name)
+	command_removed.emit(name)
 	return self._command_service.remove_at(name)
 
 
@@ -195,7 +195,7 @@ func set_is_console_shown(value):
 		$InputBlocker.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	is_console_shown = value
-	emit_signal("toggled", is_console_shown)
+	toggled.emit(is_console_shown)
 
 	return self
 
