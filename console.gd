@@ -107,7 +107,7 @@ func _ready():
 
 
 # @param  InputEvent  e
-func _input(e):
+func _input(_e):
 	if Input.is_action_just_pressed(self.get_action_service().get_real_action_name(DefaultActions.action_console_toggle)):
 		self.toggle_console()
 
@@ -123,13 +123,13 @@ func get_action_service():
 
 # @param    String  name
 # @returns  Command/Command|null
-func get_command(name):
-	return self._command_service.get(name)
+func get_command(command_name):
+	return self._command_service.get(command_name)
 
 # @param    String  name
 # @returns  Command/CommandCollection
-func find_commands(name):
-	return self._command_service.find(name)
+func find_commands(command_name):
+	return self._command_service.find(command_name)
 
 # Example usage:
 # ```gdscript
@@ -142,15 +142,15 @@ func find_commands(name):
 # @param    Reference    target
 # @param    String|null  target_name
 # @returns  Command/CommandBuilder
-func add_command(name, target, target_name = null):
-	command_added.emit(name, target, target_name)
-	return self._command_service.create(name, target, target_name)
+func add_command(command_name, target, target_name = null):
+	command_added.emit(command_name, target, target_name)
+	return self._command_service.create(command_name, target, target_name)
 
 # @param    String  name
 # @returns  int
-func remove_command(name):
-	command_removed.emit(name)
-	return self._command_service.remove_at(name)
+func remove_command(command_name):
+	command_removed.emit(command_name)
+	return self._command_service.remove_at(command_name)
 
 
 # @param    String  message
@@ -206,11 +206,11 @@ func toggle_console():
 
 
 # @returns  void
-func _toggle_animation_finished(animation):
+func _toggle_animation_finished(_animation):
 	if !self.is_console_shown:
 		self._consoleBox.hide()
 
 
 # @returns  void
-func _set_protected(value):
+func _set_protected(_value):
 	Log.warn('QC/Console: set_protected: Attempted to set a protected variable, ignoring.')
