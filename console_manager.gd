@@ -13,19 +13,16 @@ func get_console() -> Node:
 	return console
 	
 func add_command(p_name: String, p_target: Node, p_target_name = null):
-	#if console:
-		return console.add_command(p_name, p_target, p_target_name)
-	#else:
-	#	return null
+	return console.add_command(p_name, p_target, p_target_name)
 	
 func printl(p_string: String) -> void:
-	get_console().write_line(p_string)
+	print(p_string)
 	
 func error(p_string: String) -> void:
-	get_console().write_line("ERROR: " + p_string)
+	push_error("ERROR: " + p_string)
 	
 func fatal_error(p_string: String) -> void:
-	get_console().write_line("FATAL_ERROR: " + p_string)
+	push_error("FATAL_ERROR: " + p_string)
 	
 func _console_toggled(p_console_toggled: bool) -> void:
 	if p_console_toggled:
