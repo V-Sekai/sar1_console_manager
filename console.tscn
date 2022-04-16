@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cev31p2vnhuiv"]
+[gd_scene load_steps=8 format=3 uid="uid://cev31p2vnhuiv"]
 
 [ext_resource type="Script" path="res://addons/sar1_console_manager/console.gd" id="5"]
 [ext_resource type="Script" path="res://addons/quentincaffeino-console/src/ConsoleLine.gd" id="6"]
@@ -36,6 +36,11 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gpydu"]
+_data = {
+"fade": SubResource( "1" )
+}
+
 [sub_resource type="StyleBoxEmpty" id="2"]
 
 [sub_resource type="StyleBoxEmpty" id="3"]
@@ -51,37 +56,30 @@ script = ExtResource( "5" )
 [node name="InputBlocker" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ConsoleBox" type="Panel" parent="."]
 self_modulate = Color(0.498039, 0.498039, 0.498039, 0.8)
 anchor_right = 1.0
 anchor_bottom = 0.5
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ConsoleBox"]
-anims/fade = SubResource( "1" )
+libraries = {
+"": SubResource( "AnimationLibrary_gpydu" )
+}
 
 [node name="Container" type="VBoxContainer" parent="ConsoleBox"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ConsoleText" type="RichTextLabel" parent="ConsoleBox/Container"]
 offset_right = 1024.0
 offset_bottom = 264.0
-focus_next = NodePath("../LineEdit")
-focus_previous = NodePath("../LineEdit")
 size_flags_horizontal = 3
 size_flags_vertical = 3
+focus_next = NodePath("../LineEdit")
+focus_previous = NodePath("../LineEdit")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_constants/line_separation = 4
 theme_override_styles/focus = SubResource( "2" )
@@ -92,9 +90,9 @@ bbcode_enabled = true
 offset_top = 270.0
 offset_right = 1024.0
 offset_bottom = 300.0
+size_flags_horizontal = 3
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
-size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
 theme_override_styles/focus = SubResource( "8" )
 script = ExtResource( "6" )
