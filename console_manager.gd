@@ -23,6 +23,7 @@ func error(p_string: String) -> void:
 	
 func fatal_error(p_string: String) -> void:
 	push_error("FATAL_ERROR: " + p_string)
+	print_stack()
 	
 func _console_toggled(p_console_toggled: bool) -> void:
 	if p_console_toggled:
