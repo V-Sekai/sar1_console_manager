@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://uoe56gx2k8wn"]
-
-[ext_resource type="Script" path="res://addons/sar1_console_manager/console.gd" id="5"]
-
-[node name="Console" type="CanvasLayer"]
-layer = 128
-script = ExtResource( "5" )
