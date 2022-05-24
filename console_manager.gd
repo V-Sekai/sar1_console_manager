@@ -39,6 +39,6 @@ func toggle_console() -> void:
 func _ready():
 	print("ConsoleManager _ready")
 	console = $"/root/Console"
-	assert(console.toggled.connect(self._console_toggled) == OK)
+	console.toggled.connect(self._console_toggled)
 	print("Console is " + str(console) + " console._animationPlayer is " + str(console._animationPlayer))
-	assert(console._animationPlayer.animation_finished.connect(self._toggle_animation_finished) == OK)
+	console._animationPlayer.animation_finished.connect(self._toggle_animation_finished)
